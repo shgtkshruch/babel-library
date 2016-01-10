@@ -4,8 +4,14 @@ var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var coffee = require('gulp-coffee');
 var plumber = require('gulp-plumber');
+var env = require('gulp-env');
 
 gulp.task('nodemon', function () {
+  env({
+    file: '.env',
+    type: 'ini'
+  });
+
   nodemon({
     script: 'index.js',
     ignore: ['package.json', 'noode_modules', 'gulpfile.js', 'views', 'public']

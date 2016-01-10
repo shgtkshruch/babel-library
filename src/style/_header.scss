@@ -1,0 +1,10 @@
+.header {
+  overflow: hidden;
+  &__title {
+    float: left;
+    font-size: 16px;
+  }
+  &__account {
+    float: right;
+  }
+}
