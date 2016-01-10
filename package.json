@@ -1,0 +1,37 @@
+{
+  "name": "babel-library",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "5.4.0",
+    "npm": "3.3.12"
+  },
+  "scripts": {
+    "postinstall": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shgtkshruch/babel-library.git"
+  },
+  "keywords": [],
+  "author": "shgtkshruch <shgtk.shruch@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shgtkshruch/babel-library/issues"
+  },
+  "homepage": "https://github.com/shgtkshruch/babel-library#readme",
+  "dependencies": {
+    "browser-sync": "^2.11.0",
+    "co-views": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.1.1",
+    "jade": "^1.11.0",
+    "koa": "^1.1.2",
+    "koa-route": "^2.4.2",
+    "koa-static": "^2.0.0"
+  }
+}
