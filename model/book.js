@@ -20,5 +20,10 @@ module.exports = {
   exist: function *(isbn) {
     var res = yield Book.findOne({isbn: isbn});
     return res ? true : false;
+  },
+
+  remove: function *(isbn) {
+    var book = yield Book.findOne({isbn: isbn});
+    yield book.remove();
   }
 }

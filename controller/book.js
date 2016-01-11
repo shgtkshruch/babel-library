@@ -27,5 +27,11 @@ module.exports = {
 
     this.status = 200;
     this.redirect('/');
+  },
+
+  del: function *() {
+    var body = yield parse(this);
+    yield model.remove(body.isbn);
+    this.status = 200;
   }
 }

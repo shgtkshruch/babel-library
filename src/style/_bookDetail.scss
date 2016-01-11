@@ -1,0 +1,44 @@
+.bookDetail {
+  $border-radius: 10px;
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  border-radius: $border-radius;
+  background-color: #fff;
+  &__header {
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #eee;
+    border-radius: $border-radius $border-radius 0 0;
+  }
+  &__title {
+    padding-right: 30px;
+    padding-left: 30px;
+    font-size: 16px;
+    font-weight: normal;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+  &__close {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #bbb;
+    cursor: pointer;
+  }
+  &__remove {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: red;
+    cursor: pointer;
+  }
+}

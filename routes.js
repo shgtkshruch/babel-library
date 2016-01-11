@@ -12,4 +12,5 @@ module.exports = function (app) {
   app.use(route.get('/logout', account.logout));
 
   app.use(route.post('/book', book.add));
+  app.use(route.del('/book', book.del));
 }
