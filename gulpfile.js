@@ -14,14 +14,14 @@ gulp.task('nodemon', function () {
 
   nodemon({
     script: 'index.js',
-    ignore: ['package.json', 'noode_modules', 'gulpfile.js', 'views', 'public']
+    ignore: ['package.json', 'noode_modules', 'gulpfile.js', 'view', 'public']
   });
 });
 
 gulp.task('browser-sync', ['nodemon'], function () {
   browserSync.init({
     proxy: 'http://localhost:8080',
-    files: ['views/**/*'],
+    files: ['view/**/*'],
     notify: false,
     browser: 'google chrome canary'
   });
