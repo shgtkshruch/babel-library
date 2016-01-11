@@ -4,7 +4,11 @@
     float: left;
     font-size: 16px;
   }
-  &__account {
+  &__right {
     float: right;
+  }
+  &__add {
+    margin-right: 10px;
+    cursor: pointer;
   }
 }

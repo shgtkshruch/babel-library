@@ -1,1 +1,3 @@
-console.log 'Wellcome to Babel Library'
+$ '#addItem'
+  .click ->
+    $('.itemFrom').show()

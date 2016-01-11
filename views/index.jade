@@ -6,6 +6,23 @@ block body
     if !authenticated
       a.header__account(href="/login") Login
     else
-      a.header__account(href="/logout") Logout
+      .header__right
+        a.header__add#addItem +
+        a.header__account(href="/logout") Logout
 
-  script(src="script/app.js")
+  main
+    each book, i in books
+      .book
+        img(src="#{book.attributes.image}" alt="")
+        p= book.attributes.title
+        p= book.attributes.author
+
+  if authenticated
+    form.itemFrom(action="/book" method="POST")
+      input(type="hidden" name="_csrf" value="#{csrf}")
+      input(type="text" name="isbn" placeholder="ISBN")
+      input(type="submit" value="Add")
+
+  if authenticated
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+    script(src="script/app.js")

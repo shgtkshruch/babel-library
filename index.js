@@ -1,4 +1,6 @@
 var session = require('koa-session');
+var amazon = require('./lib/amazon');
+var model = require('./model/book');
 var serve = require('koa-static');
 var route = require('koa-route');
 var views = require('co-views');
@@ -18,7 +20,11 @@ var render = views('views', {default: 'jade'});
 app.use(serve('public'));
 
 app.use(route.get('/', function *() {
-  this.body = yield render('index', {authenticated: this.session.authenticated});
+  this.body = yield render('index', {
+    authenticated: this.session.authenticated,
+    csrf: this.csrf,
+    books: yield model.find()
+  });
 }));
 
 app.use(route.get('/login', function *() {
@@ -45,6 +51,32 @@ app.use(route.post('/login', function *() {
 
 app.use(route.get('/logout', function *() {
   this.session.authenticated = null;
+  this.redirect('/');
+}));
+
+app.use(route.post('/book', function *() {
+  var body = yield parse.form(this);
+
+  try {
+    this.assertCSRF(body);
+  } catch (err) {
+    this.throw(403, 'This CSRF token is invalid.');
+  }
+
+  if (yield model.exist(body.isbn)) {
+    this.body = 'This book has been registered.';
+    return
+  }
+
+  try {
+    var book = yield amazon.search(body.isbn);
+  } catch (err) {
+    this.throw(400, 'invalid ISBN');
+  }
+
+  yield model.save(book);
+
+  this.status = 200;
   this.redirect('/');
 }));
 
