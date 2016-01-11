@@ -1,0 +1,12 @@
+.book {
+  $margin: 20px;
+
+  display: inline-block;
+  margin-right: $margin / 2;
+  margin-left: $margin / 2;
+  margin-bottom: $margin;
+  cursor: pointer;
+  &__img {
+    width: 150px;
+  }
+}

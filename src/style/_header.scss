@@ -1,8 +1,14 @@
 .header {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
   overflow: hidden;
+  background-color: #333;
+  color: #fff;
   &__title {
     float: left;
     font-size: 16px;
+    font-weight: normal;
   }
   &__right {
     float: right;
@@ -10,5 +16,8 @@
   &__add {
     margin-right: 10px;
     cursor: pointer;
+  }
+  &__account {
+    color: #fff;
   }
 }
