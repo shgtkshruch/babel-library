@@ -8,8 +8,11 @@ $ '.js-book'
   .click ->
     book =
       isbn: $(@).data('isbn')
-      title: $(@).data('title')
       image: $(@).data('image')
+      title: $(@).data('title')
+      author: $(@).data('author')
+      publisher: $(@).data('publisher')
+      publicationDate: $(@).data('publicationDate')
 
     $ '.js-modal'
       .after bookDetailTemplate book

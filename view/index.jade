@@ -13,7 +13,7 @@ block body
   main
     each book, i in books
       - book = book.attributes
-      .book.js-book(data-isbn="#{book.isbn}" data-title="#{book.title}" data-author="#{book.author}" data-image="#{book.image}")
+      .book.js-book(data-isbn="#{book.isbn}" data-title="#{book.title}" data-author="#{book.author}" data-image="#{book.image}" data-price="#{book.price}" data-publisher="#{book.publisher}" data-publication-date="#{book.publicationDate}")
         img.book__img(src="#{book.image}" alt="")
 
   .modal.js-modal
@@ -31,6 +31,12 @@ block body
           i.fa.fa-times.bookDetail__close.js-bookDetail__close
         .bookDetail__body
           img.bookDetail__img(src!="<%= image %>")
+          ul.bookDetail__list
+            li.bookDetail__data <%= title %>
+            li.bookDetail__data <%= author %>
+            li.bookDetail__data <%= publisher %>
+            li.bookDetail__data <%= publicationDate %>
+        footer.bookDetail__footer
           i.fa.fa-trash.bookDetail__remove.js-bookDetail__remove
   else
     script(type="text/template" id="bookDetail-template")
@@ -40,6 +46,11 @@ block body
           i.fa.fa-times.bookDetail__close.js-bookDetail__close
         .bookDetail__body
           img.bookDetail__img(src!="<%= image %>")
+          ul.bookDetail__list
+            li.bookDetail__data <%= title %>
+            li.bookDetail__data <%= author %>
+            li.bookDetail__data <%= publisher %>
+            li.bookDetail__data <%= publicationDate %>
 
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js")
