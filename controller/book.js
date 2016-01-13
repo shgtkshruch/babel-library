@@ -18,7 +18,7 @@ module.exports = {
     }
 
     try {
-      var book = yield amazon.search(body.isbn);
+      var book = yield amazon.search(body);
     } catch (err) {
       this.throw(400, 'invalid ISBN');
     }

@@ -33,8 +33,12 @@
     color: #bbb;
     cursor: pointer;
   }
-  &__body {
+  &__main {
     padding: 20px;
+  }
+  &__detail {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
     font-size: 0;
   }
   &__img {
@@ -54,6 +58,18 @@
     &:not(:last-child) {
       margin-bottom: 10px;
     }
+  }
+  &__attributes {
+    padding-top: 20px;
+  }
+  &__placeTitle {
+    display:  table-cell;
+    width: 70px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  &__placeData {
+    display: table-cell;
   }
   &__footer {
     text-align: right;

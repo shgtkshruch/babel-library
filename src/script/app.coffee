@@ -13,6 +13,7 @@ $ '.js-book'
       author: $(@).data('author')
       publisher: $(@).data('publisher')
       publicationDate: $(@).data('publicationDate')
+      place: $(@).data('place')
 
     $ '.js-modal'
       .after bookDetailTemplate book
