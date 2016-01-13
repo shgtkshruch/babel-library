@@ -25,5 +25,13 @@ module.exports = {
   remove: function *(isbn) {
     var book = yield Book.findOne({isbn: isbn});
     yield book.remove();
+  },
+
+  update: {
+    place:  function *(book) {
+      var targetBook = yield Book.findOne({isbn: book.isbn});
+      targetBook.set({place: book.place});
+      yield targetBook.save();
+    }
   }
 }

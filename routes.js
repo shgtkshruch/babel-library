@@ -13,4 +13,5 @@ module.exports = function (app) {
 
   app.use(route.post('/book', book.add));
   app.use(route.del('/book', book.del));
+  app.use(route.put('/book/place', book.update.place));
 }

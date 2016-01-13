@@ -33,5 +33,13 @@ module.exports = {
     var body = yield parse(this);
     yield model.remove(body.isbn);
     this.status = 200;
+  },
+
+  update: {
+    place: function *() {
+      var body = yield parse(this);
+      yield model.update.place(body);
+      this.status = 200;
+    }
   }
 }

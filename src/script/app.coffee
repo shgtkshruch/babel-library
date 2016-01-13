@@ -40,3 +40,16 @@ $(document).on 'click', '.js-bookDetail__remove', ->
     method: 'DELETE'
     data:
       isbn: isbn
+
+$(document).on 'change', '.js-bookDetail__place', ->
+  isbn = $('.js-bookDetail').data('isbn')
+  place = $(@).val()
+
+  $('[data-isbn=' + isbn + ']').data('place', place)
+
+  $.ajax
+    url: '/book/place'
+    method: 'PUT'
+    data:
+      isbn: isbn
+      place: place
