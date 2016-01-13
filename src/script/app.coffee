@@ -29,23 +29,20 @@ $(document).on 'click', '.js-bookDetail__close, .js-modal', ->
   $('.js-modal__form').hide()
 
 $(document).on 'click', '.js-bookDetail__remove', ->
-  isbn = $(@).parents('.js-bookDetail').data('isbn');
-
-  $('[data-isbn=' + isbn + ']').remove()
-
-  $('.js-modal').hide()
+  isbn = $(@).parents('.js-bookDetail').data('isbn')
 
   $.ajax
     url: '/book'
     method: 'DELETE'
     data:
       isbn: isbn
+    success: (data, status, xhr) ->
+      $('[data-isbn=' + isbn + ']').remove()
+      $('.js-modal').hide()
 
 $(document).on 'change', '.js-bookDetail__place', ->
   isbn = $('.js-bookDetail').data('isbn')
   place = $(@).val()
-
-  $('[data-isbn=' + isbn + ']').data('place', place)
 
   $.ajax
     url: '/book/place'
@@ -53,3 +50,6 @@ $(document).on 'change', '.js-bookDetail__place', ->
     data:
       isbn: isbn
       place: place
+    success: (data, status, xhr) ->
+      $('[data-isbn=' + isbn + ']').data('place', place)
+
