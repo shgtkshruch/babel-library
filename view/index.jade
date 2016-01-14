@@ -32,16 +32,14 @@ block body
     script(type="text/template" id="bookDetail-template")
       section.bookDetail.js-bookDetail(data-isbn!="<%= isbn %>")
         header.bookDetail__header
-          h2.bookDetail__title <%= title %>
           i.fa.fa-times.bookDetail__close.js-bookDetail__close
         .bookDetail__main
           .bookDetail__detail
             img.bookDetail__img(src!="<%= image %>")
             ul.bookDetail__list
               li.bookDetail__data <%= title %>
-              li.bookDetail__data <%= author %>
-              li.bookDetail__data <%= publisher %>
-              li.bookDetail__data <%= publicationDate %>
+              li.bookDetail__data <%= author %>著
+              li.bookDetail__data <%= publisher %> / <%= publicationDate %>発売
           .bookDetail__attributes
             .bookDetail__attribute
               span.bookDetail__heading 場所
@@ -80,16 +78,14 @@ block body
     script(type="text/template" id="bookDetail-template")
       section.bookDetail.js-bookDetail(data-isbn!="<%= isbn %>")
         header.bookDetail__header
-          h2.bookDetail__title <%= title %>
           i.fa.fa-times.bookDetail__close.js-bookDetail__close
         .bookDetail__main
           .bookDetail__detail
             img.bookDetail__img(src!="<%= image %>")
             ul.bookDetail__list
               li.bookDetail__data <%= title %>
-              li.bookDetail__data <%= author %>
-              li.bookDetail__data <%= publisher %>
-              li.bookDetail__data <%= publicationDate %>
+              li.bookDetail__data <%= author %>著
+              li.bookDetail__data <%= publisher %> / <%= publicationDate %>発売
           .bookDetail__attributes
             .bookDetail__attribute
               span.bookDetail__heading 場所
