@@ -9,6 +9,7 @@ $ '.js-book'
     book =
       isbn: $(@).data('isbn')
       image: $(@).data('image')
+      detailPageURL: $(@).data('detailpageurl')
       title: $(@).data('title')
       author: $(@).data('author')
       publisher: $(@).data('publisher')

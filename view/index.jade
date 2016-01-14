@@ -13,7 +13,7 @@ block body
   main
     each book, i in books
       - book = book.attributes
-      .book.js-book(data-isbn="#{book.isbn}" data-title="#{book.title}" data-author="#{book.author}" data-image="#{book.image}" data-price="#{book.price}" data-publisher="#{book.publisher}" data-publication-date="#{book.publicationDate}" data-place="#{book.place}" data-page="#{book.page}" data-booklist="#{book.booklist}")
+      .book.js-book(data-isbn="#{book.isbn}" data-title="#{book.title}" data-author="#{book.author}" data-image="#{book.image}" data-detailpageURL="#{book.detailPageURL}" data-price="#{book.price}" data-publisher="#{book.publisher}" data-publication-date="#{book.publicationDate}" data-place="#{book.place}" data-page="#{book.page}" data-booklist="#{book.booklist}")
         img.book__img(src="#{book.image}" alt="")
 
   .modal.js-modal
@@ -35,7 +35,8 @@ block body
           i.fa.fa-times.bookDetail__close.js-bookDetail__close
         .bookDetail__main
           .bookDetail__detail
-            img.bookDetail__img(src!="<%= image %>")
+            a(href!="<%= detailPageURL %>" target="_blank")
+              img.bookDetail__img(src!="<%= image %>")
             ul.bookDetail__list
               li.bookDetail__data <%= title %>
               li.bookDetail__data <%= author %>著
@@ -82,7 +83,8 @@ block body
           i.fa.fa-times.bookDetail__close.js-bookDetail__close
         .bookDetail__main
           .bookDetail__detail
-            img.bookDetail__img(src!="<%= image %>")
+            a(href!="<%= detailPageURL %>" target="_blank")
+              img.bookDetail__img(src!="<%= image %>")
             ul.bookDetail__list
               li.bookDetail__data <%= title %>
               li.bookDetail__data <%= author %>著
