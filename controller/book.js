@@ -40,6 +40,12 @@ module.exports = {
       var body = yield parse(this);
       yield model.update.place(body);
       this.status = 200;
+    },
+
+    booklist: function *() {
+      var body = yield parse(this);
+      yield model.update.booklist(body);
+      this.status = 200;
     }
   }
 }

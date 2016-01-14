@@ -13,7 +13,7 @@ block body
   main
     each book, i in books
       - book = book.attributes
-      .book.js-book(data-isbn="#{book.isbn}" data-title="#{book.title}" data-author="#{book.author}" data-image="#{book.image}" data-price="#{book.price}" data-publisher="#{book.publisher}" data-publication-date="#{book.publicationDate}" data-place="#{book.place}")
+      .book.js-book(data-isbn="#{book.isbn}" data-title="#{book.title}" data-author="#{book.author}" data-image="#{book.image}" data-price="#{book.price}" data-publisher="#{book.publisher}" data-publication-date="#{book.publicationDate}" data-place="#{book.place}" data-booklist="#{book.booklist}")
         img.book__img(src="#{book.image}" alt="")
 
   .modal.js-modal
@@ -25,6 +25,7 @@ block body
         option(value="本棚") 本棚
         option(value="kindle") Kindle
         option(value="i文庫") i文庫
+      textarea(name="booklist")
       input(type="submit" value="Add")
 
   if authenticated
@@ -42,26 +43,37 @@ block body
               li.bookDetail__data <%= publisher %>
               li.bookDetail__data <%= publicationDate %>
           .bookDetail__attributes
-            span.bookDetail__placeTitle 場所
-            span.bookDetail__placeData
-              select.js-bookDetail__place(name="place")
-                <% if (place === "本棚") { %>
-                option(value="本棚" selected) 本棚
-                <% } else { %>
-                option(value="本棚") 本棚
-                <% } %>
+            .bookDetail__attribute
+              span.bookDetail__heading 場所
+              span.bookDetail__content
+                select.js-bookDetail__place(name="place")
+                  <% if (place === "本棚") { %>
+                  option(value="本棚" selected) 本棚
+                  <% } else { %>
+                  option(value="本棚") 本棚
+                  <% } %>
 
-                <% if (place === "kindle") { %>
-                option(value="kindle" selected) kindle
-                <% } else { %>
-                option(value="kindle" ) kindle
-                <% } %>
+                  <% if (place === "kindle") { %>
+                  option(value="kindle" selected) kindle
+                  <% } else { %>
+                  option(value="kindle" ) kindle
+                  <% } %>
 
-                <% if (place === "i文庫") { %>
-                option(value="i文庫" selected) i文庫
-                <% } else {%>
-                option(value="i文庫") i文庫
-                <% } %>
+                  <% if (place === "i文庫") { %>
+                  option(value="i文庫" selected) i文庫
+                  <% } else { %>
+                  option(value="i文庫") i文庫
+                  <% } %>
+            .bookDetail__attribute
+              span.bookDetail__heading Booklist
+              span.bookDetail__content
+                textarea
+                  <% if (booklist.length !== 0) { %>
+                  <%= booklist %>
+                  <% } %>
+              span.bookDetail__booklistBtn
+                button#booklistBtn(type="button") 保存
+
         footer.bookDetail__footer
           i.fa.fa-trash.bookDetail__remove.js-bookDetail__remove
   else
@@ -79,8 +91,14 @@ block body
               li.bookDetail__data <%= publisher %>
               li.bookDetail__data <%= publicationDate %>
           .bookDetail__attributes
-            span.bookDetail__placeTitle 場所
-            span.bookDetail__placeData <%= place %>
+            .bookDetail__attribute
+              span.bookDetail__heading 場所
+              span.bookDetail__content <%= place %>
+            <% if (booklist.length !== 0) { %>
+            .bookDetail__attribute
+              span.bookDetail__heading Booklist
+              span.bookDetail__content <%= booklist %>
+            <% } %>
 
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js")

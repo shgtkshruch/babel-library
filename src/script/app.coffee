@@ -14,6 +14,7 @@ $ '.js-book'
       publisher: $(@).data('publisher')
       publicationDate: $(@).data('publicationDate')
       place: $(@).data('place')
+      booklist: $(@).data('booklist')
 
     $ '.js-modal'
       .after bookDetailTemplate book
@@ -53,3 +54,15 @@ $(document).on 'change', '.js-bookDetail__place', ->
     success: (data, status, xhr) ->
       $('[data-isbn=' + isbn + ']').data('place', place)
 
+$(document).on 'click', '#booklistBtn', ->
+  booklist = $(@).parent().prev().find('textarea').val()
+  isbn = $(@).parents('.js-bookDetail').data('isbn')
+
+  $.ajax
+    url: '/book/booklist'
+    method: 'PUT'
+    data:
+      isbn: isbn
+      booklist: booklist
+    success: (data, status, xhr) ->
+      $('[data-isbn=' + isbn + ']').data('booklist', booklist)

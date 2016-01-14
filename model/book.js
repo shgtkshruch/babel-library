@@ -32,6 +32,12 @@ module.exports = {
       var targetBook = yield Book.findOne({isbn: book.isbn});
       targetBook.set({place: book.place});
       yield targetBook.save();
+    },
+
+    booklist: function *(book) {
+      var targetBook = yield Book.findOne({isbn: book.isbn});
+      targetBook.set({booklist: book.booklist});
+      yield targetBook.save();
     }
   }
 }
