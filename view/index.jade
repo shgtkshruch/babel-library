@@ -13,7 +13,7 @@ block body
   main
     each book, i in books
       - book = book.attributes
-      .book.js-book(data-isbn="#{book.isbn}" data-title="#{book.title}" data-author="#{book.author}" data-image="#{book.image}" data-price="#{book.price}" data-publisher="#{book.publisher}" data-publication-date="#{book.publicationDate}" data-place="#{book.place}" data-booklist="#{book.booklist}")
+      .book.js-book(data-isbn="#{book.isbn}" data-title="#{book.title}" data-author="#{book.author}" data-image="#{book.image}" data-price="#{book.price}" data-publisher="#{book.publisher}" data-publication-date="#{book.publicationDate}" data-place="#{book.place}" data-page="#{book.page}" data-booklist="#{book.booklist}")
         img.book__img(src="#{book.image}" alt="")
 
   .modal.js-modal
@@ -40,6 +40,7 @@ block body
               li.bookDetail__data <%= title %>
               li.bookDetail__data <%= author %>著
               li.bookDetail__data <%= publisher %> / <%= publicationDate %>発売
+              li.bookDetail__data <%= price %>円 / <%= page %>ページ
           .bookDetail__attributes
             .bookDetail__attribute
               span.bookDetail__heading 場所
@@ -86,6 +87,7 @@ block body
               li.bookDetail__data <%= title %>
               li.bookDetail__data <%= author %>著
               li.bookDetail__data <%= publisher %> / <%= publicationDate %>発売
+              li.bookDetail__data <%= price %>円 / <%= page %>ページ
           .bookDetail__attributes
             .bookDetail__attribute
               span.bookDetail__heading 場所

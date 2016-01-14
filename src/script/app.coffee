@@ -13,6 +13,8 @@ $ '.js-book'
       author: $(@).data('author')
       publisher: $(@).data('publisher')
       publicationDate: $(@).data('publicationDate')
+      price: $(@).data('price')
+      page: $(@).data('page')
       place: $(@).data('place')
       booklist: $(@).data('booklist')
 
