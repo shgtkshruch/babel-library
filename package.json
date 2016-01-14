@@ -8,7 +8,7 @@
     "npm": "3.3.12"
   },
   "scripts": {
-    "postinstall": "gulp build"
+    "postinstall": "bower install && gulp build"
   },
   "repository": {
     "type": "git",

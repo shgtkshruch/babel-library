@@ -10,7 +10,7 @@ block body
           a.header__add#addItem +
           a.header__account(href="/logout") Logout
 
-  main
+  main(data-booklist="#{booklist}")
     each book, i in books
       - book = book.attributes
       .book.js-book(data-isbn="#{book.isbn}" data-title="#{book.title}" data-author="#{book.author}" data-image="#{book.image}" data-detailpageURL="#{book.detailPageURL}" data-price="#{book.price}" data-publisher="#{book.publisher}" data-publication-date="#{book.publicationDate}" data-place="#{book.place}" data-page="#{book.page}" data-booklist="#{book.booklist}")
@@ -102,4 +102,6 @@ block body
 
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js")
+  if authenticated
+    script(src="/jquery-textcomplete/dist/jquery.textcomplete.min.js")
   script(src="script/app.js")

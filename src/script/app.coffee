@@ -69,3 +69,17 @@ $(document).on 'click', '#booklistBtn', ->
       booklist: booklist
     success: (data, status, xhr) ->
       $('[data-isbn=' + isbn + ']').data('booklist', booklist)
+
+$(document).on 'keyup', 'textarea', ->
+  booklistNames = $('main').data('booklist').split(',')
+
+  $(@).textcomplete [{
+    match: /\b(\w{2,})$/
+    search: (term, callback) ->
+      callback($.map(booklistNames, (name) ->
+        return if name.indexOf(term) is 0 then name else null
+      ))
+    index: 1
+    replace: (word) ->
+      return word + ' '
+  }]

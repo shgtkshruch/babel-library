@@ -1,0 +1,21 @@
+{
+  "name": "babel-library",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "shgtkshruch <shgtk.shruch@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/shgtkshruch/babel-library",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-textcomplete": "~0.8.1"
+  }
+}

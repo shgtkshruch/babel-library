@@ -12,6 +12,7 @@ app.use(session(app));
 csrf(app);
 
 app.use(serve('public'));
+app.use(serve('bower_components'));
 
 routes(app);
 
