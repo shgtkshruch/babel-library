@@ -17,7 +17,7 @@ $ '.js-book'
       price: $(@).data('price')
       page: $(@).data('page')
       place: $(@).data('place')
-      booklist: $(@).data('booklist')
+      booklist: $(@).data('booklist').replace(/,/g, ' ')
 
     $ '.js-modal'
       .after bookDetailTemplate book
