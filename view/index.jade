@@ -31,8 +31,7 @@ block body
 
   .modal.js-modal
   if authenticated
-    form.modal__form.js-modal__form(action="/book" method="POST")
-      input(type="hidden" name="_csrf" value="#{csrf}")
+    form.modal__form.js-modal__form#form
       input(type="text" name="isbn" placeholder="ISBN")
       select(name="place")
         option(value="本棚") 本棚
@@ -112,6 +111,10 @@ block body
               span.bookDetail__heading Booklist
               span.bookDetail__content <%= booklist %>
             <% } %>
+
+  if authenticated
+    script.
+      var csrf = '#{csrf}';
 
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js")

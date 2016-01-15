@@ -6,6 +6,28 @@ $ '#addItem'
   .click ->
     $('.js-modal, .js-modal__form').show()
 
+$ '#form'
+  .on 'submit', (e) ->
+    e.preventDefault()
+
+    isbn = $(@).find('input').val()
+    place = $(@).find('select').val()
+    booklist = $(@).find('textarea').val().trim().split(' ')
+
+    $.ajax
+      url: '/book'
+      method: 'POST'
+      data:
+        isbn: isbn
+        place: place
+        booklist: booklist
+        _csrf: csrf
+      success: (data, status, xhr) ->
+        location.reload()
+
+      error: (xhr, status, error) ->
+        console.log error
+
 # show modal window to display detail infromation of book
 $book.click ->
   book =
@@ -64,7 +86,7 @@ $(document).on 'change', '.js-bookDetail__place', ->
 
 # update booklist
 $(document).on 'click', '#booklistBtn', ->
-  booklist = $(@).parent().prev().find('textarea').val()
+  booklist = $(@).parent().prev().find('textarea').val().trim().split(' ')
   isbn = $(@).parents('.js-bookDetail').attr('data-isbn')
 
   $.ajax
