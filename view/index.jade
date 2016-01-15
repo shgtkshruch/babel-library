@@ -4,13 +4,19 @@ block body
   header.header
     h1.header__title Babel Library
     .header__right
-      .header__place
-        span.header__placeTitle Place
+      .header__controller
+        span.header__controllerTitle Place
         select#placeController
           option(value="all" selected) All
           option(value="本棚") 本棚
           option(value="kindle") Kindle
           option(value="i文庫") i文庫
+      .header__controller
+        span.header__controllerTitle Booklist
+        select#booklistController
+          option(value="all" selected) All
+          each bl, i in booklist
+            option(value="#{bl}")= bl
       if !authenticated
         a.header__account(href="/login") Login
       else

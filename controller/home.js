@@ -15,6 +15,6 @@ module.exports = function *() {
     authenticated: this.session.authenticated,
     csrf: this.csrf,
     books: books,
-    booklist: _(booklist).flatten().uniq()
+    booklist: _.chain(booklist).flatten().uniq().value()
   });
 }
