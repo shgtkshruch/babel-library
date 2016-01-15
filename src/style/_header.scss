@@ -13,6 +13,13 @@
   &__right {
     float: right;
   }
+  &__place {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  &__placeTitle {
+    margin-right: 10px;
+  }
   &__add {
     margin-right: 10px;
     cursor: pointer;

@@ -1,31 +1,31 @@
+$book = $('.js-book')
 bookDetailTemplate = _.template $('#bookDetail-template').text()
 
 $ '#addItem'
   .click ->
     $('.js-modal, .js-modal__form').show()
 
-$ '.js-book'
-  .click ->
-    book =
-      isbn: $(@).data('isbn')
-      image: $(@).data('image')
-      detailPageURL: $(@).data('detailpageurl')
-      title: $(@).data('title')
-      author: $(@).data('author')
-      publisher: $(@).data('publisher')
-      publicationDate: $(@).data('publicationDate')
-      price: $(@).data('price')
-      page: $(@).data('page')
-      place: $(@).data('place')
-      booklist: $(@).data('booklist').replace(/,/g, ' ')
+$book.click ->
+  book =
+    isbn: $(@).data('isbn')
+    image: $(@).data('image')
+    detailPageURL: $(@).data('detailpageurl')
+    title: $(@).data('title')
+    author: $(@).data('author')
+    publisher: $(@).data('publisher')
+    publicationDate: $(@).data('publicationDate')
+    price: $(@).data('price')
+    page: $(@).data('page')
+    place: $(@).data('place')
+    booklist: $(@).data('booklist').replace(/,/g, ' ')
 
-    $ '.js-modal'
-      .after bookDetailTemplate book
-      .next()
-        .css
-          top: $(window).scrollTop() + $(window).height() / 2
-        .end()
-      .show()
+  $ '.js-modal'
+    .after bookDetailTemplate book
+    .next()
+      .css
+        top: $(window).scrollTop() + $(window).height() / 2
+      .end()
+    .show()
 
 $(document).on 'click', '.js-bookDetail__close, .js-modal', ->
   $('.js-bookDetail').remove()
@@ -55,7 +55,7 @@ $(document).on 'change', '.js-bookDetail__place', ->
       isbn: isbn
       place: place
     success: (data, status, xhr) ->
-      $('[data-isbn=' + isbn + ']').data('place', place)
+      $('[data-isbn=' + isbn + ']').attr('data-place', place)
 
 $(document).on 'click', '#booklistBtn', ->
   booklist = $(@).parent().prev().find('textarea').val()
@@ -83,3 +83,12 @@ $(document).on 'keyup', 'textarea', ->
     replace: (word) ->
       return word + ' '
   }]
+
+$ '#placeController'
+  .on 'change', ->
+    place = $(@).val()
+    if place is 'all'
+      $book.show()
+    else
+      $book.hide()
+      $('[data-place="' + place + '"]').show()
