@@ -9,16 +9,16 @@ $ '#addItem'
 # show modal window to display detail infromation of book
 $book.click ->
   book =
-    isbn: $(@).data('isbn')
-    image: $(@).data('image')
-    detailPageURL: $(@).data('detailpageurl')
-    title: $(@).data('title')
-    author: $(@).data('author')
-    publisher: $(@).data('publisher')
-    publicationDate: $(@).data('publicationDate')
-    price: $(@).data('price')
-    page: $(@).data('page')
-    place: $(@).data('place')
+    isbn: $(@).attr('data-isbn')
+    image: $(@).attr('data-image')
+    detailPageURL: $(@).attr('data-detailpageurl')
+    title: $(@).attr('data-title')
+    author: $(@).attr('data-author')
+    publisher: $(@).attr('data-publisher')
+    publicationDate: $(@).attr('data-publicationDate')
+    price: $(@).attr('data-price')
+    page: $(@).attr('data-page')
+    place: $(@).attr('data-place')
     booklist: $(@).attr('data-booklist').replace(/,/g, ' ')
 
   $ '.js-modal'
@@ -37,7 +37,7 @@ $(document).on 'click', '.js-bookDetail__close, .js-modal', ->
 
 # remove book
 $(document).on 'click', '.js-bookDetail__remove', ->
-  isbn = $(@).parents('.js-bookDetail').data('isbn')
+  isbn = $(@).parents('.js-bookDetail').attr('data-isbn')
 
   $.ajax
     url: '/book'
@@ -50,7 +50,7 @@ $(document).on 'click', '.js-bookDetail__remove', ->
 
 # update place of book
 $(document).on 'change', '.js-bookDetail__place', ->
-  isbn = $('.js-bookDetail').data('isbn')
+  isbn = $('.js-bookDetail').attr('data-isbn')
   place = $(@).val()
 
   $.ajax
@@ -65,7 +65,7 @@ $(document).on 'change', '.js-bookDetail__place', ->
 # update booklist
 $(document).on 'click', '#booklistBtn', ->
   booklist = $(@).parent().prev().find('textarea').val()
-  isbn = $(@).parents('.js-bookDetail').data('isbn')
+  isbn = $(@).parents('.js-bookDetail').attr('data-isbn')
 
   $.ajax
     url: '/book/booklist'
@@ -78,7 +78,7 @@ $(document).on 'click', '#booklistBtn', ->
 
 # autocomplete
 $(document).on 'keyup', 'textarea', ->
-  booklistNames = $('main').data('booklist').split(',')
+  booklistNames = $('main').attr('data-booklist').split(',')
 
   $(@).textcomplete [{
     match: /\b(\w{2,})$/
