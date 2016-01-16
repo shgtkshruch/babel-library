@@ -66,6 +66,7 @@ $(document).on 'click', '.js-bookDetail__remove', ->
     method: 'DELETE'
     data:
       isbn: isbn
+      _csrf: csrf
     success: (data, status, xhr) ->
       $('[data-isbn=' + isbn + ']').remove()
       $('.js-modal').hide()
@@ -81,6 +82,7 @@ $(document).on 'change', '.js-bookDetail__place', ->
     data:
       isbn: isbn
       place: place
+      _csrf: csrf
     success: (data, status, xhr) ->
       $('[data-isbn=' + isbn + ']').attr('data-place', place)
 
@@ -95,6 +97,7 @@ $(document).on 'click', '#booklistBtn', ->
     data:
       isbn: isbn
       booklist: booklist
+      _csrf: csrf
     success: (data, status, xhr) ->
       $('[data-isbn=' + isbn + ']').attr('data-booklist', booklist)
 

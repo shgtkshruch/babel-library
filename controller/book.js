@@ -30,6 +30,13 @@ module.exports = {
 
   del: function *() {
     var body = yield parse(this);
+
+    try {
+      this.assertCSRF(body);
+    } catch (err) {
+      this.throw(403, 'This CSRF token is invalid.');
+    }
+
     yield model.remove(body.isbn);
     this.status = 200;
   },
@@ -37,12 +44,26 @@ module.exports = {
   update: {
     place: function *() {
       var body = yield parse(this);
+
+      try {
+        this.assertCSRF(body);
+      } catch (err) {
+        this.throw(403, 'This CSRF token is invalid.');
+      }
+
       yield model.update.place(body);
       this.status = 200;
     },
 
     booklist: function *() {
       var body = yield parse(this);
+
+      try {
+        this.assertCSRF(body);
+      } catch (err) {
+        this.throw(403, 'This CSRF token is invalid.');
+      }
+
       yield model.update.booklist(body);
       this.status = 200;
     }
