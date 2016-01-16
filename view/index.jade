@@ -43,20 +43,19 @@ block body
   if authenticated
     script(type="text/template" id="bookDetail-template")
       section.bookDetail.js-bookDetail(data-isbn!="<%= isbn %>")
-        header.bookDetail__header
-          i.fa.fa-times.bookDetail__close.js-bookDetail__close
-        .bookDetail__main
-          .bookDetail__detail
-            a(href!="<%= detailPageURL %>" target="_blank")
-              img.bookDetail__img(src!="<%= image %>")
-            ul.bookDetail__list
-              li.bookDetail__data <%= title %>
-              li.bookDetail__data <%= author %>著
-              li.bookDetail__data <%= publisher %> / <%= publicationDate %>発売
-              li.bookDetail__data <%= price %>円 / <%= page %>ページ
-          .bookDetail__attributes
-            .bookDetail__attribute
-              span.bookDetail__heading 場所
+        i.fa.fa-times.bookDetail__close.js-bookDetail__close
+        .bookDetail__unit
+          a(href!="<%= detailPageURL %>" target="_blank")
+            img.bookDetail__img(src!="<%= image %>")
+        .bookDetail__unit
+          ul.bookDetail__list
+            li.bookDetail__data <%= title %>
+            li.bookDetail__data <%= author %>著
+            li.bookDetail__data <%= publisher %> / <%= publicationDate %>発売
+            li.bookDetail__data <%= price %>円 / <%= page %>ページ
+          .bookDetail__list
+            .bookDetail__data
+              span.bookDetail__heading Place
               span.bookDetail__content
                 select.js-bookDetail__place(name="place")
                   <% if (place === "本棚") { %>
@@ -76,40 +75,41 @@ block body
                   <% } else { %>
                   option(value="i文庫") i文庫
                   <% } %>
-            .bookDetail__attribute
-              span.bookDetail__heading Booklist
+            .bookDetail__data
+              span.bookDetail__heading
+                | Booklist
+                span.bookDetail__booklistBtn
+                  button#booklistBtn(type="button") 保存
               span.bookDetail__content
                 textarea
                   <% if (booklist.length !== 0) { %>
-                  <%= booklist %>
+                  <% _.forEach(booklist, function(bl) { %><%= bl %> <% }); %>
                   <% } %>
-              span.bookDetail__booklistBtn
-                button#booklistBtn(type="button") 保存
-
-        footer.bookDetail__footer
           i.fa.fa-trash.bookDetail__remove.js-bookDetail__remove
   else
     script(type="text/template" id="bookDetail-template")
       section.bookDetail.js-bookDetail(data-isbn!="<%= isbn %>")
-        header.bookDetail__header
-          i.fa.fa-times.bookDetail__close.js-bookDetail__close
-        .bookDetail__main
-          .bookDetail__detail
-            a(href!="<%= detailPageURL %>" target="_blank")
-              img.bookDetail__img(src!="<%= image %>")
-            ul.bookDetail__list
-              li.bookDetail__data <%= title %>
-              li.bookDetail__data <%= author %>著
-              li.bookDetail__data <%= publisher %> / <%= publicationDate %>発売
-              li.bookDetail__data <%= price %>円 / <%= page %>ページ
-          .bookDetail__attributes
-            .bookDetail__attribute
-              span.bookDetail__heading 場所
+        i.fa.fa-times.bookDetail__close.js-bookDetail__close
+        .bookDetail__unit
+          a(href!="<%= detailPageURL %>" target="_blank")
+            img.bookDetail__img(src!="<%= image %>")
+        .bookDetail__unit
+          ul.bookDetail__list
+            li.bookDetail__data <%= title %>
+            li.bookDetail__data <%= author %>著
+            li.bookDetail__data <%= publisher %> / <%= publicationDate %>発売
+            li.bookDetail__data <%= price %>円 / <%= page %>ページ
+          .bookDetail__list
+            .bookDetail__data
+              span.bookDetail__heading Place
               span.bookDetail__content <%= place %>
             <% if (booklist.length !== 0) { %>
-            .bookDetail__attribute
+            .bookDetail__data
               span.bookDetail__heading Booklist
-              span.bookDetail__content <%= booklist %>
+              .bookDetail__content
+                <% _.forEach(booklist, function(bl) { %>
+                p <%= bl %>
+                <% }); %>
             <% } %>
 
   if authenticated

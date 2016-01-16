@@ -37,11 +37,11 @@ $book.click ->
     title: $(@).attr('data-title')
     author: $(@).attr('data-author')
     publisher: $(@).attr('data-publisher')
-    publicationDate: $(@).attr('data-publicationDate')
+    publicationDate: $(@).attr('data-publication-date')
     price: $(@).attr('data-price')
     page: $(@).attr('data-page')
     place: $(@).attr('data-place')
-    booklist: $(@).attr('data-booklist').replace(/,/g, ' ')
+    booklist: $(@).attr('data-booklist').split(',')
 
   $ '.js-modal'
     .after bookDetailTemplate book
@@ -86,7 +86,7 @@ $(document).on 'change', '.js-bookDetail__place', ->
 
 # update booklist
 $(document).on 'click', '#booklistBtn', ->
-  booklist = $(@).parent().prev().find('textarea').val().trim().split(' ')
+  booklist = $(@).parents('.bookDetail__heading').next().find('textarea').val().trim().split(' ')
   isbn = $(@).parents('.js-bookDetail').attr('data-isbn')
 
   $.ajax
