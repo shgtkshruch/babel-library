@@ -87,8 +87,8 @@ $(document).on 'change', '.js-bookDetail__place', ->
       $('[data-isbn=' + isbn + ']').attr('data-place', place)
 
 # update booklist
-$(document).on 'click', '#booklistBtn', ->
-  booklist = $(@).parents('.bookDetail__heading').next().find('textarea').val().trim().split(' ')
+$(document).on 'focusout', '.js-bookDetail__textarea', ->
+  booklist = $(@).val().trim().split(' ')
   isbn = $(@).parents('.js-bookDetail').attr('data-isbn')
 
   $.ajax

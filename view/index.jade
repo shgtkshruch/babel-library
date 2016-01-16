@@ -78,10 +78,8 @@ block body
             .bookDetail__data
               span.bookDetail__heading
                 | Booklist
-                span.bookDetail__booklistBtn
-                  button#booklistBtn(type="button") 保存
               span.bookDetail__content
-                textarea
+                textarea.js-bookDetail__textarea
                   <% if (booklist.length !== 0) { %>
                   <% _.forEach(booklist, function(bl) { %><%= bl %> <% }); %>
                   <% } %>
