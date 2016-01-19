@@ -1,6 +1,13 @@
 $book = $('.js-book')
 bookDetailTemplate = _.template $('#bookDetail-template').text()
 
+# count number of book
+bookCount = ->
+  $ '#count'
+    .text $book.filter(':visible').length
+
+bookCount()
+
 # add book
 $ '#addItem'
   .click ->
@@ -126,6 +133,8 @@ $ '#placeController'
       $book.hide()
       $('[data-place="' + place + '"]').show()
 
+    bookCount()
+
 # filtering by booklist
 $ '#booklistController'
   .on 'change', ->
@@ -137,3 +146,6 @@ $ '#booklistController'
       $book.each (i, el) ->
         if $(el).attr('data-booklist').split(',').indexOf(booklist) isnt -1
           $(el).show()
+
+    bookCount()
+

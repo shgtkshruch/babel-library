@@ -2,7 +2,11 @@ extends layout
 
 block body
   header.header
-    h1.header__title Babel Library
+    .header__left
+      h1.header__title Babel Library
+      span.header__count
+        span.header__bookCount#count
+        span.header__bookUnit books
     .header__right
       .header__controller
         span.header__controllerTitle Place

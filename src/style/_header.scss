@@ -5,10 +5,20 @@
   overflow: hidden;
   background-color: #333;
   color: #fff;
+  &__left {
+    float: left;
+  }
   &__title {
     float: left;
     font-size: 16px;
     font-weight: normal;
+  }
+  &__bookCount {
+    margin-left: 20px;
+  }
+  &__bookUnit {
+    margin-left: 5px;
+    font-size: 14px;
   }
   &__right {
     float: right;
